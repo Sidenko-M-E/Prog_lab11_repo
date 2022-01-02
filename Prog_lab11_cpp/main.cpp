@@ -32,12 +32,12 @@ int main()
 	for (int i = 0; i < 3; i++)
 		arrayFio[i].Display();
 	*/
-	
+	/*
 	cout << endl << "---Read method---" << endl;
 	Fio myFio;
 	myFio.Read();
 	myFio.Display();
-	
+	*/
 	/*
 	cout << endl << "------Set methods-------" << endl;
 	if (myFio.SetSurname("Ivanov") || myFio.SetName("Ivan") || myFio.SetPatronymic("Ivanovich"))
@@ -45,6 +45,7 @@ int main()
 	else
 		myFio.Display();
 	*/
+	cout << "Arrays of objects\n";
 
 	cout << endl << "--------Human class--------" << endl;
 	/*
@@ -69,12 +70,12 @@ int main()
 	for (int i = 0; i < 3; i++)
 		arrayHuman[i].Display();
 	*/
-	
+	/*
 	cout << "\n------Read method------\n";
 	Human myHuman;
 	myHuman.Read();
 	myHuman.Display();
-
+	*/
 	/*
 	cout << "\n------Set methods-------\n";
 	if (myHuman.SetId(1999) || myHuman.SetAge(27) || myHuman.SetHeight(180) ||
@@ -108,10 +109,12 @@ int main()
 	for (int i = 0; i < 3; i++)
 		arrayStudent[i].Display();
 	*/
+	/*
 	cout << "\n------Read method------\n";
 	Student myStudent;
 	myStudent.Read();
 	myStudent.Display();
+	*/
 	/*
 	cout << "\n------Set methods-------\n";
 	if (myStudent.SetCourse(4) || myStudent.SetEduProg("Master") || 
@@ -146,10 +149,12 @@ int main()
 	for (int i = 0; i < 3; i++)
 		arrayTeacher[i].Display();
 	*/
+	/*
 	cout << "\n------Read method------\n";
 	Teacher myTeacher;
 	myTeacher.Read();
 	myTeacher.Display();
+	*/
 	/*
 	cout << "\n------Set methods-------\n";
 	if (myTeacher.SetWorkExp(30) || myTeacher.SetDegree("Doctor of Mathematical Sciences") || myTeacher.SetFacultyName("FoMS"))
@@ -244,6 +249,7 @@ int main()
 	dynamicFaculty2->Display();
 	cout << "It's a deep copy\n";
 	*/
+	/*
 	cout << "\n------Read method------\n";
 	Faculty myFaculty;
 	myFaculty.Read();
@@ -263,7 +269,7 @@ int main()
 	{
 		cout << ex.what();
 	}
-	
+	*/
 	
 	/*
 	cout << "\n------Shortcut-Set methods-------\n";
