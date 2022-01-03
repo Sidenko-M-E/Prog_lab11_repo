@@ -7,345 +7,204 @@ namespace Prog_lab6
 		static void Main(string[] args)
 		{
 			Console.Write("--------Fio class--------\n");
-			/*
-			Console.Write("------Constructors-------\n");
-			Fio fio1 = new Fio();
-			fio1.Display();
-			Fio fio2 = new Fio("Popov");
-			fio2.Display();
-			Fio fio3 = new Fio("Ivanov", "Sergey", "Ivanovich");
-			fio3.Display();
+			Console.Write("Arrays of objects\n");
+			Console.Write("One-dimensional array:\n");
+			int i, j, count;
+			Fio[] arrFio = new Fio[5];
+			arrFio[0] = new Fio("Sidenko");
+			arrFio[1] = new Fio("Baranov");
+			arrFio[2] = new Fio("Suslov");
+			arrFio[3] = new Fio("Petriakov");
+			arrFio[4] = new Fio("Anosov");
 
-			Console.Write("\n-----Array of objects with constructor----\n");
-			Fio[] arrFio = new Fio[3];
-			for (int i = 0; i < 3; i++)
-			{ 
-				arrFio[i] = new Fio("stated");
+			Console.Write("Array content:\n");
+			count = 0;
+			for (i = 0; i < 5; i++)
+			{
 				arrFio[i].Display();
+				if (arrFio[i].GetSurname().StartsWith("S"))
+					count++;
 			}
-			*/
-			
-			Console.Write("---Read method---\n");
-			Fio myFio = new Fio();
-			myFio.Read();
-			myFio.Display();
-				
-			/*
-			Console.Write("\n------Set methods-------\n");
-			if ((myFio.SetSurname("Ivanov")) || (myFio.SetName("Ivan")) || (myFio.SetPatronymic("Ivanovich")))
-				Console.Write("error\n");
-			else
-				myFio.Display();
-			*/
-			/*
-			Console.Write("------set-properties demo-------\n");
-			myFio.Surname = "Sidorov";
-			myFio.Name = "Oleg";
-			myFio.Patronymic = "Litvinovich";
-			myFio.Display();
+			Console.Write("\nNumber of surnames which had started with 'S': {0}\n", count);
 
-			Console.Write("------get-properties demo-------\n");
-			Fio demoFio = new Fio();
-			demoFio.Init(myFio.Surname, myFio.Name, myFio.Patronymic);
-			demoFio.Display();
-			*/
+			Console.Write("\nTwo-dimensional array:\n");
+			Fio[,] fios = new Fio[2,2];
+			fios[0, 0] = new Fio("Lisizin");
+			fios[0, 1] = new Fio("Kutepov");
+			fios[1, 0] = new Fio("Shurov");
+			fios[1, 1] = new Fio("Kulagin");
 
-			/*
-			Console.Write("\n---class and struct difference---\n");
-			Fio myFio = new Fio();
-			myFio.Surname = "Komolov";
-			myFio.Name = "Oleg";
-			myFio.Patronymic = "Victorovich";
-			Console.Write("\nmyFio class:\n");
-			myFio.Display();
+			Console.Write("Array content:\n");
+			count = 0;
+			for (i = 0; i < 2; i++)
+				for (j = 0; j < 2; j++)
+				{
+					if (fios[i, j].GetSurname().StartsWith("A"))
+						count++;
+					fios[i, j].Display();
+				}
+			Console.Write("\nNumber of surnames which had started with 'A': {0}\n", count);
 
-			Fio demoFio = new Fio();
-			demoFio.Surname = "Anosov";
-			demoFio.Name = "Aleksandr";
-			demoFio.Patronymic = "Ivanovich";
-			Console.Write("\ndemoFio class:\n");
-			demoFio.Display();
 
-			Console.Write("\nResult of demoFio = myFio is\n");
-			demoFio = myFio;
-			demoFio.Display();
-
-			myFio.Init("Stepanov", "Maksim", "Olegovich");
-			Console.Write("\nmyFio class after change:\n");
-			myFio.Display();
-
-			Console.Write("\nFinal value of demoFio:\n");
-			demoFio.Display();
-			*/
 
 			Console.Write("\n--------Human class--------\n");
-			/*
-			Console.Write("------Constructors-------\n");
-			Human human1 = new Human();
-			human1.Display();
-			Human human2 = new Human(13);
-			human2.Display();
-			Human human3 = new Human(13, 45, 190, 90, 'M', fio3);
-			human3.Display();
-
-			Console.Write("\n-----Array of objects with constructor----\n");
-			Human[] arrHuman = new Human[3];
-			for (int i = 0; i < 3; i++)
+			Console.Write("Arrays of objects\n");
+			Console.Write("One-dimensional array:\n");
+			Random rnd = new Random();
+			Human[] arrHuman = new Human[5];
+			for (i = 0; i < 5; i++)
 			{
-				arrHuman[i] = new Human(i);
-				arrHuman[i].Display();
+				arrHuman[i] = new Human(i, rnd.Next(10, 60), rnd.Next(176, 200), rnd.Next(60, 100), 'M', arrFio[i]);
 			}
-			*/
-			Console.Write("------Read method------\n");
-			Human myHuman = new Human();
-			myHuman.Read();
-			myHuman.Display();
-				
-			/*
-			Console.Write("\n------Set methods-------\n");
-			if (myHuman.SetId(1999) || myHuman.SetAge(27) || myHuman.SetHeight(180) ||
-				myHuman.SetWeight(80.890) || myHuman.SetGender('M'))
-				Console.Write("error\n");
-			else
-				myHuman.Display();
-			*/
-			/*
-			Console.Write("------set-properties demo-------\n");
-			myHuman.Id = 2000;
-			myHuman.Age = 40;
-			myHuman.Height = 190;
-			myHuman.Weight = 86.190;
-			myHuman.Gender = 'M';
-			myHuman.FioField = demoFio;
-			myHuman.Display();
 
-			Console.Write("------get-properties demo-------\n");
-			Human demoHuman = new Human();
-			demoHuman.Init(myHuman.Id, myHuman.Age, myHuman.Height, myHuman.Weight, myHuman.Gender, myHuman.FioField);
-			demoHuman.Display();
-			*/
+			Console.Write("Array content:\n");
+			count = 0;
+			for (i = 0; i < 5; i++)
+			{
+				arrHuman[i].Display();
+				if (arrHuman[i].GetAge() > 45)
+					count++;
+			}
+			Console.Write("\nNumber of humans with age more than 45: {0}\n", count);
+
+			Console.Write("\nTwo-dimensional array:\n");
+			Human[,] humans = new Human[2, 2];
+			for (i = 0; i < 2; i++)
+				for (j = 0; j < 2; j++)
+				{
+					humans[i, j] = new Human(i + j * 2, rnd.Next(10, 60), rnd.Next(170, 200), rnd.Next(60, 100), 'M', arrFio[i]);
+				}
+
+			Console.Write("Array content:\n");
+			count = 0;
+			for (i = 0; i < 2; i++)
+				for (j = 0; j < 2; j++)
+				{
+					if (humans[i, j].GetHeight() < 185)
+						count++;
+					humans[i, j].Display();
+				}
+			Console.Write("\nNumber of humans with height less than 185: {0}\n", count);
+
 
 
 			Console.Write("\n--------Student class--------\n");
-			/*
-			Console.Write("------Constructors-------\n");
-			Student student1 = new Student();
-			student1.Display();
-			Student student2 = new Student(human2);
-			student2.Display();
-			Student student3 = new Student(2, "Bachelor", "PI-03", "FoIT", human3);
-			student3.Display();
+			Console.Write("Arrays of objects\n");
+			Console.Write("One-dimensional array:\n");
+			Student[] arrStudent = new Student[5];
+			arrStudent[0] = new Student(rnd.Next(4), "Bachelor", "HS-03", "FoHS", arrHuman[0]);
+			arrStudent[1] = new Student(rnd.Next(4), "Bachelor", "FI-03", "FoMS", arrHuman[1]);
+			arrStudent[2] = new Student(rnd.Next(4), "Master", "IT-03", "FoIT", arrHuman[2]);
+			arrStudent[3] = new Student(rnd.Next(4), "Bachelor", "CS-03", "FoCS", arrHuman[3]);
+			arrStudent[4] = new Student(rnd.Next(4), "Master", "JK-03", "FoJK", arrHuman[4]);
 
-			Console.Write("\n-----Array of objects with constructor----\n");
-			Student[] arrStudent = new Student[3];
-			for (int i = 0; i < 3; i++)
+			Console.Write("Array content:\n");
+			count = 0;
+			for (i = 0; i < 5; i++)
 			{
-				arrStudent[i] = new Student(human2);
 				arrStudent[i].Display();
+				if (arrStudent[i].GetCourse() == 3)
+					count++;
 			}
-			*/
+			Console.Write("\nNumber of students on 3 course: {0}\n", count);
 
-			Console.Write("------Read method------\n");
-			Student myStudent = new Student();
-			myStudent.Read();
-			myStudent.Display();
+			Console.Write("\nTwo-dimensional array:\n");
+			Student[,] students = new Student[2, 2];
+			students[0,0] = new Student(rnd.Next(4), "Master", "HS-03", "FoHS", humans[0,0]);
+			students[0,1] = new Student(rnd.Next(4), "Bachelor", "MS-03", "FoMS", humans[0,1]);
+			students[1,0] = new Student(rnd.Next(4), "Master", "IT-03", "FoIT", humans[1,0]);
+			students[1,1] = new Student(rnd.Next(4), "Bachelor", "CS-03", "FoCS", humans[1,1]);
 
-			/*
-			Console.Write("\n------Set methods-------\n");
-			if (myStudent.SetCourse(4) || myStudent.SetEduProg("Master") ||
-				myStudent.SetGroup("CS-91") ||
-				myStudent.SetFacultyName("FoIT"))
-				Console.Write("error\n");
-			else
-				myStudent.Display();
-			*/
-			/*
-			Console.Write("------set-properties demo-------\n");
-			myStudent.Course = 1;
-			myStudent.EduProg = "Bachelor";
-			myStudent.Group = "WS-34";
-			myStudent.FacultyName = "FoHS";
-			myStudent.HumanField = demoHuman;
-			myStudent.Display();
+			Console.Write("Array content:\n");
+			count = 0;
+			for (i = 0; i < 2; i++)
+				for (j = 0; j < 2; j++)
+				{
+					if (students[i, j].GetFacultyName() == "FoMS")
+						count++;
+					students[i, j].Display();
+				}
+			Console.Write("\nNumber of students on FoMS faculty: {0}\n", count);
 
-			Console.Write("------get-properties demo-------\n");
-			Student demoStudent = new Student();
-			demoStudent.Init(myStudent.Course, myStudent.EduProg, myStudent.Group, myStudent.FacultyName, myStudent.HumanField);
-			demoStudent.Display();
-			*/
 
 
 			Console.Write("\n--------Teacher class--------\n");
-			/*
-			Console.Write("------Constructors-------\n");
-			Teacher teacher1 = new Teacher();
-			teacher1.Display();
-			Teacher teacher2 = new Teacher(human2);
-			teacher2.Display();
-			Teacher teacher3 = new Teacher(18, "Candidate of Mathemetical Sciences", "FoMS", human3);
-			teacher3.Display();
+			Console.Write("Arrays of objects\n");
+			Console.Write("One-dimensional array:\n");
+			Teacher[] arrTeacher = new Teacher[5];
+			arrTeacher[0] = new Teacher(rnd.Next(0, 40), "Doctor", "FoIT", arrHuman[0]);
+			arrTeacher[1] = new Teacher(rnd.Next(0, 40), "Candidate", "FoCS", arrHuman[1]);
+			arrTeacher[2] = new Teacher(rnd.Next(0, 40), "Doctor", "FoHS", arrHuman[2]);
+			arrTeacher[3] = new Teacher(rnd.Next(0, 40), "Candidate", "FoHS", arrHuman[3]);
+			arrTeacher[4] = new Teacher(rnd.Next(0, 40), "Candidate", "FoMS", arrHuman[4]);
 
-			Console.Write("\n-----Array of objects with constructor----\n");
-			Teacher[] arrTeacher = new Teacher[3];
-			for (int i = 0; i < 3; i++)
+			Console.Write("Array content:\n");
+			count = 0;
+			for (i = 0; i < 5; i++)
 			{
-				arrTeacher[i] = new Teacher(human2);
 				arrTeacher[i].Display();
+				if (arrTeacher[i].GetWorkExp() > 20)
+					count++;
 			}
-			*/
+			Console.Write("\nNumber of teachers with working experience more than 20 years: {0}\n", count);
 
-			Console.Write("------Read method------\n");
-			Teacher myTeacher = new Teacher();
-			myTeacher.Read();
-			myTeacher.Display();
+			Console.Write("\nTwo-dimensional array:\n");
+			Teacher[,] teachers = new Teacher[2, 2];
+			teachers[0, 0] = new Teacher(rnd.Next(0, 40), "Candidate", "FoMS", humans[0, 0]);
+			teachers[0, 1] = new Teacher(rnd.Next(0, 40), "Doctor", "FoCS", humans[0, 1]);
+			teachers[1, 0] = new Teacher(rnd.Next(0, 40), "Candidate", "FoHS", humans[1, 0]);
+			teachers[1, 1] = new Teacher(rnd.Next(0, 40), "Doctor", "FoIT", humans[1, 1]);
 
-			/*
-			Console.Write("\n------Set methods-------\n");
-			if (myTeacher.SetWorkExp(30) || myTeacher.SetDegree("Doctor of Mathematical Sciences") || myTeacher.SetFacultyName("SMTH"))
-				Console.Write("error\n");
-			else
-				myTeacher.Display();
-			*/
-			/*
-			Console.Write("------set-properties demo-------\n");
-			myTeacher.WorkExp = 20;
-			myTeacher.Degree = "Candidate of Historical Sciences";
-			myTeacher.FacultyName = "FoHS";
-			myTeacher.HumanField = demoHuman;
-			myTeacher.Display();
+			Console.Write("Array content:\n");
+			count = 0;
+			for (i = 0; i < 2; i++)
+				for (j = 0; j < 2; j++)
+				{
+					if (teachers[i, j].GetFacultyName() == "FoHS")
+						count++;
+					teachers[i, j].Display();
+				}
+			Console.Write("\nNumber of teachers on FoHS faculty: {0}\n", count);
 
-			Console.Write("------get-properties demo-------\n");
-			Teacher demoTeacher = new Teacher();
-			demoTeacher.Init(myTeacher.WorkExp, myTeacher.Degree, myTeacher.FacultyName, myTeacher.HumanField);
-			demoTeacher.Display();
 
-			Console.Write("\n----operator overloading demo----\n");
-			Console.Write("demoTeacher.WorkExp = {0}\n",demoTeacher.WorkExp);
-			
-			demoTeacher = demoTeacher + 3;
-			Console.Write("\ndemoTeacher + 3 = new object of Teacher class:\n", demoTeacher);
-			demoTeacher.Display();
-
-			Console.Write("\n4 + demoTeacher  = {0} of int\n", 4 + demoTeacher);
-
-			Console.Write("\ndemoTeacher++ = new object of Teacher class\n");
-			demoTeacher++;
-			demoTeacher.Display();
-
-			Console.Write("\n++demoTeacher = new object of Teacher class\n");
-			++demoTeacher;
-			demoTeacher.Display();
-			*/
-			/*
-			Console.Write("\nStatic method demo\n");
-			Fio myFio = new Fio();
-			myFio.Init("Popov", "Alexandr", "Dmitrievich");
-			Human myHuman = new Human();
-			myHuman.Init(1913, 43, 182, 70.89, 'F', myFio);
-			Teacher myTeacher = new Teacher();
-			myTeacher.Init(18, "Candidate of Mathematical Sciences", "FoMS", myHuman);
-			Console.Write("Teacher:\n");
-			myTeacher.Display();
-			Console.Write("\nAnd his salary is...\n");
-			Console.Write(Teacher.GetSalaryOf(myTeacher));
-			*/
 
 			Console.Write("\n--------Faculty class--------\n");
-			/*
-			Console.Write("------Constructors-------\n");
-			Faculty faculty1 = new Faculty();
-			faculty1.Display();
-			Faculty faculty2 = new Faculty("FoMS");
-			faculty2.Display();
-			Faculty faculty3 = new Faculty("FoMS", 200, 180, 20, 40, 30, 10, 30);
-			faculty3.Display();
+			Console.Write("Arrays of objects\n");
+			Console.Write("One-dimensional array:\n");
+			Faculty[] arrFaculty = new Faculty[5];
+			arrFaculty[0] = new Faculty("FoMS", rnd.Next(150, 200), rnd.Next(0, 150), 30, rnd.Next(10, 30), rnd.Next(10, 20), 20, rnd.Next(10, 30));
+			arrFaculty[1] = new Faculty("FoIT", rnd.Next(150, 200), rnd.Next(0, 150), 30, rnd.Next(10, 30), rnd.Next(10, 20), 20, rnd.Next(10, 30));
+			arrFaculty[2] = new Faculty("FoCS", rnd.Next(150, 200), rnd.Next(0, 150), 30, rnd.Next(10, 30), rnd.Next(10, 20), 20, rnd.Next(10, 30));
+			arrFaculty[3] = new Faculty("FoIT", rnd.Next(150, 200), rnd.Next(0, 150), 30, rnd.Next(10, 30), rnd.Next(10, 20), 20, rnd.Next(10, 30));
+			arrFaculty[4] = new Faculty("FoHS", rnd.Next(150, 200), rnd.Next(0, 150), 30, rnd.Next(10, 30), rnd.Next(10, 20), 20, rnd.Next(10, 30));
 
-			Console.Write("\n-----Array of objects with constructor----\n");
-			Faculty[] arrFaculty = new Faculty[3];
-			for (int i = 0; i < 3; i++)
+			Console.Write("Array content:\n");
+			count = 0;
+			for (i = 0; i < 5; i++)
 			{
-				arrFaculty[i] = new Faculty("stated");
 				arrFaculty[i].Display();
+				if (arrFaculty[i].GetQuantityOfTeachers() > 20)
+					count++;
 			}
-			*/
-			/*
-			Console.Write("\n------Shortcut-set methods-------\n");
-			myFaculty.SetStudentsInfo(300, 270, 30);
-			myFaculty.SetTeachersInfo(40, 33, 7);
-			if (myFaculty.SetFacultyName("Fo****IT"))
-				Console.Write("Error\n");
-			else
-				myFaculty.Display();
-			*/
+			Console.Write("\nNumber of faculties with more than 15 teachers: {0}\n", count);
 
-			Console.Write("------Read method------\n");
-			Faculty myFaculty = new Faculty();
-			myFaculty.Read();
-			myFaculty.Display();
+			Console.Write("\nTwo-dimensional array:\n");
+			Faculty[,] faculties = new Faculty[2, 2];
+			faculties[0, 0] = new Faculty("FoCS", rnd.Next(150, 200), rnd.Next(0, 150), 30, rnd.Next(10, 30), rnd.Next(10, 20), 20, rnd.Next(10, 30));
+			faculties[0, 1] = new Faculty("FoHS", rnd.Next(150, 200), rnd.Next(0, 150), 30, rnd.Next(10, 30), rnd.Next(10, 20), 20, rnd.Next(10, 30));
+			faculties[1, 0] = new Faculty("FoMS", rnd.Next(150, 200), rnd.Next(0, 150), 30, rnd.Next(10, 30), rnd.Next(10, 20), 20, rnd.Next(10, 30));
+			faculties[1, 1] = new Faculty("FoIT", rnd.Next(150, 200), rnd.Next(0, 150), 30, rnd.Next(10, 30), rnd.Next(10, 20), 20, rnd.Next(10, 30));
 
-			try
-			{
-				Console.Write("\n----processing by methods----\n");
-				Console.Write("Procent of masters on faculty: {0:f2}\n", myFaculty.GetProcentOfMasters());
-				Console.Write("Procent of doctors on faculty: {0:f2}\n", myFaculty.GetProcentOfDoctors());
-				Console.Write("Students to teachers quantity: {0:f2}\n", myFaculty.GetStudToTeachRatio());
-			}
-			catch (DivideByZeroException ex)
-			{
-				Console.WriteLine(ex.Message);
-			}
-
-			/*
-			Console.Write("------set-properties demo-------\n");
-			myFaculty.FacultyName = "FoHS";
-			myFaculty.QuantityOfStudents = 300;
-			myFaculty.QuantityOfBachelors = 200;
-			myFaculty.QuantityOfMasters = 100;
-			myFaculty.QuantityOfTeachers = 50;
-			myFaculty.QuantityOfCandidates = 35;
-			myFaculty.QuantityOfDoctors = 15;
-			myFaculty.QuantityOfDisciplines = 40;
-			myFaculty.Display();
-
-			Console.Write("------get-properties demo-------\n");
-			Faculty demoFaculty = new Faculty();
-			demoFaculty.Init(myFaculty.FacultyName, myFaculty.QuantityOfStudents, 
-				myFaculty.QuantityOfBachelors, myFaculty.QuantityOfMasters, myFaculty.QuantityOfTeachers, 
-				myFaculty.QuantityOfCandidates, myFaculty.QuantityOfDoctors, myFaculty.QuantityOfDisciplines);
-			myFaculty.Display();
-			*/
-
-			/*
-			Console.Write("\n------array of objects------\n");
-			int sumOfStudents = 0;
-			Random rnd = new Random();
-
-			Faculty[] objArray = new Faculty[3];
-			for (int i = 0; i < objArray.Length; i++)
-			{
-				objArray[i] = new Faculty();
-				objArray[i].Init("smth", rnd.Next(500),
-						rnd.Next(450), rnd.Next(50),
-						rnd.Next(100), rnd.Next(80),
-						rnd.Next(20), rnd.Next(50));
-				sumOfStudents += objArray[i].GetQuantityOfStudents();
-				objArray[i].Display();
-			}
-			Console.Write("\nTotal quantity of students on all faculties: {0}\n", sumOfStudents);
-			Console.Write("\nLet's compare first and second faculties to find the one...\n");
-			Console.Write("...that have the largest number of candidates on it.\n");
-			Console.Write("And the answer is:\n");
-			objArray[0].GetWithMoreCandidates(objArray[1]).Display();
-			*/
-			/*
-			Console.Write("\n-------ref-out-expressions-----\n");
-			myFaculty.IsHavingMoreStudentsThen(out int myResult);
-			Console.Write("Out-expression working result = {0}\n", myResult);
-
-			int demoResult = 4;
-			myFaculty.IsHavingMoreTeachersThen(ref demoResult);
-			Console.Write("Ref-expression working result = {0}\n", demoResult);
-			*/
+			Console.Write("Array content:\n");
+			count = 0;
+			for (i = 0; i < 2; i++)
+				for (j = 0; j < 2; j++)
+				{
+					if (faculties[i, j].GetQuantityOfStudents() > 170)
+						count++;
+					faculties[i, j].Display();
+				}
+			Console.Write("\nNumber of faculties with more than 170 students: {0}\n", count);
 
 			Console.ReadKey();
 		}
