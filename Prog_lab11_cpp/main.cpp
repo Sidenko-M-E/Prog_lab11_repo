@@ -8,345 +8,231 @@
 
 int main()
 {
-	cout << "--------Fio class--------" << endl;
-	/*
-	cout << "------Constructors-------" << endl;
-	Fio fio1;
-	fio1.Display();
-	Fio fio2("Popov");
-	fio2.Display();
-	Fio fio3("Ivanov", "Sergey" , "Ivanovich");
-	fio3.Display();
-
-	cout << endl << "------Constructors of dynamic-------" << endl;
-	Fio* dynamicFio1 = new Fio();
-	dynamicFio1->Display();
-	Fio* dynamicFio2 = new Fio("Dynamicov");
-	dynamicFio2->Display();
-	Fio* dynamicFio3 = new Fio("Dynamicov", "Dynamic", "Dynamicovich");
-	dynamicFio3->Display();
-
-	cout << endl << "\n-----Array of objects with constructor----" << endl;
-	string filler;
-	Fio arrayFio[3] = {filler = "first", filler = "second", filler = "third"};
-	for (int i = 0; i < 3; i++)
-		arrayFio[i].Display();
-	*/
-	/*
-	cout << endl << "---Read method---" << endl;
-	Fio myFio;
-	myFio.Read();
-	myFio.Display();
-	*/
-	/*
-	cout << endl << "------Set methods-------" << endl;
-	if (myFio.SetSurname("Ivanov") || myFio.SetName("Ivan") || myFio.SetPatronymic("Ivanovich"))
-		cout << "error" << endl;
-	else
-		myFio.Display();
-	*/
+	cout << "--------Fio class--------\n";
 	cout << "Arrays of objects\n";
+	cout << "One-dimensional array:\n";
+	int i, j, count;
+	Fio arrFio[5]
+	{
+		Fio("Sidenko"),
+		Fio("Baranov"),
+		Fio("Suslov"),
+		Fio("Petriakov"),
+		Fio("Anosov")
+	};
 
-	cout << endl << "--------Human class--------" << endl;
-	/*
-	cout << "------Constructors-------" << endl;
-	Human human1;
-	human1.Display();
-	Human human2(3);
-	human2.Display();
-	Human human3(1913, 19, 182, 70, 'F', fio3);
-	human3.Display();
+	cout << "Array content:\n";
+	count = 0;
+	for (i = 0; i < 5; i++)
+	{
+		cout << "[" << i << "]";
+		arrFio[i].Display();
+		if (arrFio[i].GetSurname().find_first_of("S") == 0)
+			count++;
+	}
+	cout << "\nNumber of surnames which had started with 'S': " << count << endl;
 
-	cout << endl << "------Constructors of dynamic-------" << endl;
-	Human* dynamicHuman1 = new Human();
-	dynamicHuman1->Display();
-	Human* dynamicHuman2 = new Human(1988);
-	dynamicHuman2->Display();
-	Human* dynamicHuman3 = new Human(1913, 19, 182, 70, 'F', fio3);
-	dynamicHuman3->Display();
+	cout << "\nTwo-dimensional array:\n";
+	Fio fios[2][2]
+	{
+		Fio("Lisizin"),
+		Fio("Kutepov"),
+		Fio("Shurov"),
+		Fio("Kulagin")
+	};
+	
+	cout << "Array content:\n";
+	count = 0;
+	for (i = 0; i < 2; i++)
+		for (j = 0; j < 2; j++)
+		{
+			cout << "[" << i << "][" << j << "]";
+			fios[i][j].Display();
+			if (fios[i][j].GetSurname().find_first_of("A") == 0)
+				count++;
+		}
+	cout << "\nNumber of surnames which had started with 'A': " << count << endl;
 
-	cout << endl << "\n-----Array of objects with constructor----" << endl;
-	Human arrayHuman[3] = { 3, 4, 5};
-	for (int i = 0; i < 3; i++)
-		arrayHuman[i].Display();
-	*/
-	/*
-	cout << "\n------Read method------\n";
-	Human myHuman;
-	myHuman.Read();
-	myHuman.Display();
-	*/
-	/*
-	cout << "\n------Set methods-------\n";
-	if (myHuman.SetId(1999) || myHuman.SetAge(27) || myHuman.SetHeight(180) ||
-		myHuman.SetWeight(80.890) || myHuman.SetGender('M'))
-		cout << "error\n";
-	else
-		myHuman.Display();
-	*/
+
+
+	cout << "\n--------Human class--------\n";
+	cout << "Arrays of objects\n";
+	cout << "One-dimensional array:\n";
+	Human arrHuman[5];
+	for (i = 0; i < 5; i++)
+	{
+		arrHuman[i] = Human(i, rand()%20+25, rand()%40+160, rand()%40+80, 'M', arrFio[i]);
+	}
+
+	cout << "Array content:\n";
+	count = 0;
+	for (i = 0; i < 5; i++)
+	{
+		cout << "[" << i << "]";
+		arrHuman[i].Display();
+		if (arrHuman[i].GetAge() > 45)
+			count++;
+	}
+	cout << "\nNumber of humans with age more than 45: " << count << endl;
+
+	cout << "\nTwo-dimensional array:\n";
+	Human humans[2][2];
+	for (i = 0; i < 2; i++)
+		for (j = 0; j < 2; j++)
+		{
+			humans[i][j] = Human(i + j * 2, rand()%50+10, rand()%30+170, rand()%40+60, 'M', arrFio[i]);
+		}
+
+	cout << "Array content:\n";
+	count = 0;
+	for (i = 0; i < 2; i++)
+		for (j = 0; j < 2; j++)
+		{
+			cout << "[" << i << "][" << j << "]";
+			humans[i][j].Display();
+			if (humans[i][j].GetHeight() < 185)
+				count++;
+		}
+	cout << "\nNumber of humans with height less than 185: " << count << endl;
+
 
 	
 	cout << "\n--------Student class--------\n";
-	/*
-	cout << "------Constructors-------" << endl;
-	Student student1;
-	student1.Display();
-	Student student2(human3);
-	student2.Display();
-	Student student3(3, "Bachelor", "PI-03", "FoIT", human3);
-	student3.Display();
+	cout << "Arrays of objects\n";
+	cout << "One-dimensional array:\n";
+	Student arrStudent[5]
+	{
+		Student(rand() % 4, "Bachelor", "HS-03", "FoHS", arrHuman[0]),
+		Student(rand() % 4, "Bachelor", "FI-03", "FoMS", arrHuman[1]),
+		Student(rand() % 4, "Master", "IT-03", "FoIT", arrHuman[2]),
+		Student(rand() % 4, "Bachelor", "CS-03", "FoCS", arrHuman[3]),
+		Student(rand() % 4, "Master", "JK-03", "FoJK", arrHuman[4])
+	};
 
-	cout << endl << "------Constructors of dynamic-------" << endl;
-	Student* dynamicStudent1 = new Student();
-	dynamicStudent1->Display();
-	Student* dynamicStudent2 = new Student(human3);
-	dynamicHuman2->Display();
-	Student* dynamicStudent3 = new Student(3, "Bachelor", "PI-03", "FoIT", human3);
-	dynamicHuman3->Display();
+	cout << "Array content:\n";
+	count = 0;
+	for (i = 0; i < 5; i++)
+	{
+		cout << "[" << i << "]";
+		arrStudent[i].Display();
+		if (arrStudent[i].GetCourse() == 3)
+			count++;
+	}
+	cout << "\nNumber of students on 3 course: " << count << endl;
 
-	cout << endl << "\n-----Array of objects with constructor----" << endl;
-	Student arrayStudent[3] = {human1, human2, human3};
-	for (int i = 0; i < 3; i++)
-		arrayStudent[i].Display();
-	*/
-	/*
-	cout << "\n------Read method------\n";
-	Student myStudent;
-	myStudent.Read();
-	myStudent.Display();
-	*/
-	/*
-	cout << "\n------Set methods-------\n";
-	if (myStudent.SetCourse(4) || myStudent.SetEduProg("Master") || 
-		myStudent.SetGroup("CS-91") ||
-		myStudent.SetFacultyName("FoIT"))
-		cout << "error\n";
-	else
-		myStudent.Display();
-	*/
+	cout << "\nTwo-dimensional array:\n";
+	Student students[2][2]
+	{
+		Student(rand()%4, "Master", "HS-03", "FoHS", humans[0][0]),
+		Student(rand()%4, "Bachelor", "MS-03", "FoMS", humans[0][1]),
+		Student(rand()%4, "Master", "IT-03", "FoIT", humans[1][0]),
+		Student(rand()%4, "Bachelor", "CS-03", "FoCS", humans[1][1])
+	};
+
+	cout << "Array content:\n";
+	count = 0;
+	for (i = 0; i < 2; i++)
+		for (j = 0; j < 2; j++)
+		{
+			cout << "[" << i << "][" << j << "]";
+			students[i][j].Display();
+			if (students[i][j].GetFacultyName() == "FoMS")
+				count++;
+		}
+	cout << "\nNumber of students on FoMS faculty: \n" << count << endl;
+
 
 	
 	cout << "\n--------Teacher class--------\n";
-	/*
-	cout << "------Constructors-------" << endl;
-	Teacher teacher1;
-	teacher1.Display();
-	Teacher teacher2(human3);
-	teacher2.Display();
-	Teacher teacher3(18, "Doctor of Mathematical Sciences", "FoMS", human3);
-	teacher3.Display();
+	cout << "Arrays of objects\n";
+	cout << "One-dimensional array:\n";
+	Teacher arrTeacher[5]
+	{
+		Teacher(rand()%40, "Doctor", "FoIT", arrHuman[0]),
+		Teacher(rand()%40, "Candidate", "FoCS", arrHuman[1]),
+		Teacher(rand()%40, "Doctor", "FoHS", arrHuman[2]),
+		Teacher(rand()%40, "Candidate", "FoHS", arrHuman[3]),
+		Teacher(rand()%40, "Candidate", "FoMS", arrHuman[4])
+	};
 
-	cout << endl << "------Constructors of dynamic-------" << endl;
-	Teacher* dynamicTeacher1 = new Teacher();
-	dynamicTeacher1->Display();
-	Teacher* dynamicTeacher2 = new Teacher(human3);
-	dynamicTeacher2->Display();
-	Teacher* dynamicTeacher3 = new Teacher(18, "Doctor of Mathematical Sciences", "FoMS", human3);
-	dynamicTeacher3->Display();
+	cout << "Array content:\n";
+	count = 0;
+	for (i = 0; i < 5; i++)
+	{
+		cout << "[" << i << "]";
+		arrTeacher[i].Display();
+		if (arrTeacher[i].GetWorkExp() > 20)
+			count++;
+	}
+	cout << "\nNumber of teachers with working experience more than 20 years: " << count << endl;
 
-	cout << endl << "-----Array of objects with constructor----" << endl;
-	Teacher arrayTeacher[3] = { human1, human2, human3 };
-	for (int i = 0; i < 3; i++)
-		arrayTeacher[i].Display();
-	*/
-	/*
-	cout << "\n------Read method------\n";
-	Teacher myTeacher;
-	myTeacher.Read();
-	myTeacher.Display();
-	*/
-	/*
-	cout << "\n------Set methods-------\n";
-	if (myTeacher.SetWorkExp(30) || myTeacher.SetDegree("Doctor of Mathematical Sciences") || myTeacher.SetFacultyName("FoMS"))
-		cout << "error\n";
-	else
-		myTeacher.Display();
-	/*
-	cout << "\n----operator overloading demo----\n";
-	Teacher demoTeacher;
-	demoTeacher.Init(40, "Candidate of Mathematical Sciences",
-		"FoMS", myHuman);
-	cout << "demoTeacher.WorkExp = " << demoTeacher.GetWorkExp() << endl;
+	cout << "\nTwo-dimensional array:\n";
+	Teacher teachers[2][2]
+	{
+		Teacher(rand()%40, "Candidate", "FoMS", humans[0][0]),
+		Teacher(rand()%40, "Doctor", "FoCS", humans[0][1]),
+		Teacher(rand()%40, "Candidate", "FoHS", humans[1][0]),
+		Teacher(rand()%40, "Doctor", "FoIT", humans[1][1])
+	};
 
-	demoTeacher = demoTeacher + 3;
-	cout << "\ndemoTeacher + 3 = new object of Teacher class:\n";
-	demoTeacher.Display();
+	cout << "Array content:\n";
+	count = 0;
+	for (i = 0; i < 2; i++)
+		for (j = 0; j < 2; j++)
+		{
+			cout << "[" << i << "][" << j << "]";
+			teachers[i][j].Display();
+			if (teachers[i][j].GetFacultyName() == "FoHS")
+				count++;
 
-	cout << "\n4 + demoTeacher = " << 4 + demoTeacher << " of int\n";
+		}
+	cout << "\nNumber of teachers on FoHS faculty: " << count << endl;
+	
 
-	cout << "\ndemoTeacher++\n";
-	demoTeacher++;
-	demoTeacher.Display();
-
-	cout << "\n++demoTeacher:\n";
-	++demoTeacher;
-	demoTeacher.Display();
-	*/
-
-	/*
-	cout << "\nStatic method demo\n";
-	Fio myFio;
-	myFio.Init("Popov", "Alexandr", "Dmitrievich");
-	Human myHuman;
-	myHuman.Init(1913, 43, 182, 70.89, 'F', myFio);
-	Teacher myTeacher;
-	myTeacher.Init(18, "Candidate of Mathematical Sciences", "FoMS", myHuman);
-	cout << "Teacher:\n";
-	myTeacher.Display();
-	cout << "\nAnd his salary is...\n";
-	cout.setf(ios::fixed);
-	cout.precision(2);
-	cout << myTeacher.GetSalaryOf(myTeacher);
-	cout.unsetf(ios::fixed);
-	*/
 	
 	cout << "\n------Faculty class----------\n";
-	/*
-	cout << "------Constructors-------" << endl;
-	Faculty faculty1;
-	faculty1.Display();
-	Faculty faculty2("FoMS");
-	faculty2.Display();
-	Faculty faculty3("FoMS", 200, 150, 50, 30, 20, 10, 20);
-	faculty3.Display();
-
-	cout << endl << "------Constructors of dynamic-------" << endl;
-	Faculty* dynamicFaculty1 = new Faculty();
-	dynamicFaculty1->Display();
-	Faculty* dynamicFaculty2 = new Faculty("FoMS");
-	dynamicFaculty2->Display();
-	Faculty* dynamicFaculty3 = new Faculty("FoMS", 200, 150, 50, 30, 20, 10, 20);
-	dynamicFaculty3->Display();
-	
-	cout << endl << "-----Array of objects with constructor----" << endl;
-	Faculty arrayFaculty[3] = {filler = "FoHS", filler = "FoMS", filler = "FoIT"};
-	for (int i = 0; i < 3; i++)
-		arrayFaculty[i].Display();
-
-	cout << "-----Copy Constructor-----\n";
-	cout << "Origin object:\n";
-	faculty2.Display();
-	cout << "\n Copied object:\n";
-	Faculty copyFaculty = faculty2;
-	copyFaculty.Display();
-	cout << "\nChange facultyName in origin object to FoHS:\n";
-	faculty2.SetFacultyName("FoHS");
-	cout << "State of copied object has changed:\n";
-	copyFaculty.Display();
-	cout << "It's a shallow copy\n";
-
-	cout << "-----Overloading assignment operator-----\n";
-	cout << "Origin object:\n";
-	dynamicFaculty2->Display();
-	cout << "\nAssignment object:\n";
-	dynamicFaculty3->Display();
-	cout << "\nResult of assignment\n";
-	*dynamicFaculty2 = *dynamicFaculty3;
-	dynamicFaculty2->Display();
-	cout << "\nChange facultyName in assignment object to FoHS:\n";
-	dynamicFaculty3->SetFacultyName("FoHS");
-	cout << "\nState of origin object hasn't changed:\n";
-	dynamicFaculty2->Display();
-	cout << "It's a deep copy\n";
-	*/
-	/*
-	cout << "\n------Read method------\n";
-	Faculty myFaculty;
-	myFaculty.Read();
-	myFaculty.Display();
-
-	try
+	cout << "Arrays of objects\n";
+	cout << "One-dimensional array:\n";
+	Faculty arrFaculty[5]
 	{
-		cout << "\n----processing by functions----\n";
-		cout.setf(ios::fixed);
-		cout.precision(2);
-		cout << "Procent of masters on faculty: " << myFaculty.GetProcentOfMasters() << endl;
-		cout << "Procent of doctors on faculty: " << myFaculty.GetProcentOfDoctors() << endl;
-		cout << "Students to teachers ratio: " << myFaculty.GetStudToTeachRatio() << endl;
-		cout.unsetf(ios::fixed);
-	}
-	catch (const std::exception& ex)
-	{
-		cout << ex.what();
-	}
-	*/
-	
-	/*
-	cout << "\n------Shortcut-Set methods-------\n";
-	myFaculty.SetStudentsInfo(300, 270, 30);
-	myFaculty.SetTeachersInfo(40, 33, 7);
-	myFaculty.Display();
-	*/
-	/*
-	cout << "\nLet's compare two faculties to find the one...\n";
-	cout << "...that have the largest number of candidates on it.\n";
-	Faculty demoFaculty;
-	demoFaculty.Init("FoMS", 230, 175, 15, 30, 45, 15, 80);
-	cout << "First faculty:\n";
-	myFaculty.Display();
-	cout << "Second faculty:\n";
-	demoFaculty.Display();
-	cout << "And result is...\n";
-	(myFaculty.GetWithMoreCandidates(demoFaculty)).Display();
-	*/
-	/*
-	cout << "\nLets check the faculties to find the one...\n";
-	cout << "...that have enough candidates on it.\n";
-	bool result;
+		Faculty("FoMS", rand() % 50 + 150, rand() % 150, 30, rand() % 20 + 10, rand() % 10 + 10, 20, rand() % 20 + 10),
+		Faculty("FoIT", rand() % 50 + 150, rand() % 150, 30, rand() % 20 + 10, rand() % 10 + 10, 20, rand() % 20 + 10),
+		Faculty("FoCS", rand() % 50 + 150, rand() % 150, 30, rand() % 20 + 10, rand() % 10 + 10, 20, rand() % 20 + 10),
+		Faculty("FoIT", rand() % 50 + 150, rand() % 150, 30, rand() % 20 + 10, rand() % 10 + 10, 20, rand() % 20 + 10),
+		Faculty("FoHS", rand() % 50 + 150, rand() % 150, 30, rand() % 20 + 10, rand() % 10 + 10, 20, rand() % 20 + 10)
+	};
 
-	cout << "\nFirst faculty:\n";
-	myFaculty.Display();
-	cout << "\nLets check the first faculty:\n";
-	myFaculty.IsHavingEnoughCandidates(&result);
-	if (result)
-		cout << "First faculty have enough candidates.\n";
-	else
-		cout << "First faculty have not enough candidates.\n";
-
-	cout << "\nSecond faculty:\n";
-	Faculty demoFaculty;
-	demoFaculty.Init("FoMS", 230, 175, 15, 30, 45, 15, 80);
-	demoFaculty.Display();
-	cout << "\nLets check the second faculty\n";
-	demoFaculty.IsHavingEnoughCandidates(result);
-	if (result)
-		cout << "Second faculty have enough candidates.\n";
-	else
-		cout << "Second faculty have not enough candidates.\n";
-	*/	
-	/*
-	cout << "\n------dynamic memmory demo------\n";
-	cout << "----dynamic array of objects----\n";
-	int count;
-	printf("Enter the number of objects, that you want to create:\n");
-	cin >> count;
-
-	//dynamic_array[i] - объект класса 
-	Faculty* dynamicArray = new Faculty[count];//динамический массив объектов класса faculty.
-	for (int i = 0; i < count; i++) 
+	cout << "Array content:\n";
+	count = 0;
+	for (i = 0; i < 5; i++)
 	{
-		dynamicArray[i].Init("SMTH", i, i, i, i, i, i, i);
-		dynamicArray[i].Display();
-		cout << "******************\n";
+		cout << "[" << i << "]";
+		arrFaculty[i].Display();
+		if (arrFaculty[i].GetQuantityOfTeachers() > 20)
+			count++;
 	}
-	delete[] dynamicArray;
-	
-	cout << "\n----array of 5 dynamic objects----\n\n";
-	//создание 5 указателей на объекты класса faculty
-	//содержимое этих указателей не определено!!!
-	//array_of_dynamic[i] - указатель на объект
-	Faculty* arrayOfDynamic[5];
-	for (int i = 0; i < 5; i++) 
+	cout << "\nNumber of faculties with more than 15 teachers: " << count << endl;
+
+	cout << "\nTwo-dimensional array:\n";
+	Faculty faculties[2][2]
 	{
-		//определяем содержимое каждого из указателей
-		arrayOfDynamic[i] = new Faculty;
-		arrayOfDynamic[i]->Init("SMTH", i, i, i, i, i, i, i);
-		(*arrayOfDynamic[i]).Display(); //(*smth). взаимозаменяемо с smth->
-		cout << "******************\n";
-		delete arrayOfDynamic[i];
-	}
-	*/
-	//Конец демонстрационного варианта
+		Faculty("FoCS", rand() % 50 + 150, rand() % 150, 30, rand() % 20 + 10, rand() % 10 + 10, 20, rand() % 20 + 10),
+		Faculty("FoHS", rand() % 50 + 150, rand() % 150, 30, rand() % 20 + 10, rand() % 10 + 10, 20, rand() % 20 + 10),
+		Faculty("FoMS", rand() % 50 + 150, rand() % 150, 30, rand() % 20 + 10, rand() % 10 + 10, 20, rand() % 20 + 10),
+		Faculty("FoIT", rand() % 50 + 150, rand() % 150, 30, rand() % 20 + 10, rand() % 10 + 10, 20, rand() % 20 + 10)
+	};
+
+	cout << "Array content:\n";
+	count = 0;
+	for (i = 0; i < 2; i++)
+		for (j = 0; j < 2; j++)
+		{
+			cout << "[" << i << "][" << j << "]";
+			faculties[i][j].Display();
+			if (faculties[i][j].GetQuantityOfStudents() > 170)
+				count++;
+		}
+	cout << "\nNumber of faculties with more than 170 students: " << count << endl;
 	cout << "\nPress any key to exit.\n";
 	_getch();
 }
